@@ -33,6 +33,6 @@ jobs:
           branch: bump-spin-${{ github.event.client_payload.version }}
           base: main
           delete-branch: true
-          committer: fermybot <103076628+fermybot@users.noreply.github.com>
-          author: fermybot <103076628+fermybot@users.noreply.github.com>
+          committer: spinframeworkbot <202838904+spinframeworkbot@users.noreply.github.com>
+          author: spinframeworkbot <202838904+spinframeworkbot@users.noreply.github.com>
           signoff: true
