@@ -36,3 +36,4 @@ jobs:
           committer: spinframeworkbot <202838904+spinframeworkbot@users.noreply.github.com>
           author: spinframeworkbot <202838904+spinframeworkbot@users.noreply.github.com>
           signoff: true
+          token: ${{ secrets.PAT }}
