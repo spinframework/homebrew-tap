@@ -28,6 +28,23 @@ class Spin < Formula
   end
 
   def post_install
+    # Migrate plugins and templates and templates data to new data directory
+    source_dir = etc/"fermyon-spin"
+    dest_dir = etc/"spinframework-spin"
+    if File.directory?(source_dir) && !Dir.empty?(source_dir)
+      ohai "Migrating Spin data from #{source_dir} to #{dest_dir}"
+      mkdir_p dest_dir
+      files = Dir.glob("#{source_dir}/*")
+
+      if files.any?
+        files.each do |file|
+          cp_r file, dest_dir, preserve: true
+        end
+      else
+        ohai "No files to migrate from #{source_dir}"
+      end
+    end
+
     # Install default templates and plugins for language tooling and deploying apps to the cloud.
     # Templates and plugins are installed into `pkgetc/"templates"` and `pkgetc/"plugins"`.
     system "#{bin}/spin", "templates", "install", "--git", "https://github.com/fermyon/spin", "--upgrade"
