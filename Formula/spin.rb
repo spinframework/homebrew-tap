@@ -57,7 +57,6 @@ class Spin < Formula
     end
 
     system "#{bin}/spin", "plugins", "update"
-    system "#{bin}/spin", "plugins", "install", "js2wasm", "--yes"
   end
 
   test do
