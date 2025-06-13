@@ -47,11 +47,16 @@ class Spin < Formula
 
     # Install default templates and plugins for language tooling and deploying apps to the cloud.
     # Templates and plugins are installed into `pkgetc/"templates"` and `pkgetc/"plugins"`.
-    system "#{bin}/spin", "templates", "install", "--git", "https://github.com/fermyon/spin", "--upgrade"
-    system "#{bin}/spin", "templates", "install", "--git", "https://github.com/fermyon/spin-python-sdk", "--upgrade"
-    system "#{bin}/spin", "templates", "install", "--git", "https://github.com/fermyon/spin-js-sdk", "--upgrade"
+    template_repos = [
+      "https://github.com/spinframework/spin",
+      "https://github.com/spinframework/spin-python-sdk",
+      "https://github.com/spinframework/spin-js-sdk",
+    ]
+    template_repos.each do |repo|
+      system "#{bin}/spin", "templates", "install", "--git", repo, "--upgrade"
+    end
+
     system "#{bin}/spin", "plugins", "update"
-    system "#{bin}/spin", "plugins", "install", "js2wasm", "--yes"
   end
 
   test do
