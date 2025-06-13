@@ -51,7 +51,6 @@ class Spin < Formula
     system "#{bin}/spin", "templates", "install", "--git", "https://github.com/fermyon/spin-python-sdk", "--upgrade"
     system "#{bin}/spin", "templates", "install", "--git", "https://github.com/fermyon/spin-js-sdk", "--upgrade"
     system "#{bin}/spin", "plugins", "update"
-    system "#{bin}/spin", "plugins", "install", "js2wasm", "--yes"
   end
 
   test do
