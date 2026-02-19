@@ -1,26 +1,26 @@
 class Spin < Formula
   desc "Open-source tool for building and running serverless WebAssembly applications"
   homepage "https://github.com/spinframework/spin"
-  version "3.6.0"
+  version "3.6.1"
 
   if OS.mac? && Hardware::CPU.intel?
     url "https://github.com/spinframework/spin/releases/download/v#{version}/spin-v#{version}-macos-amd64.tar.gz"
-    sha256 "5354e40d30c8aa343d317b33e2750535bf6a7f1646d10294fa86a1f15a9d1602"
+    sha256 "f7c1b902bdfd46ba60a230d2bf16a9ee3f6d3aa38eaf774e4c0b3b88f357297d"
   end
 
   if OS.mac? && Hardware::CPU.arm?
     url "https://github.com/spinframework/spin/releases/download/v#{version}/spin-v#{version}-macos-aarch64.tar.gz"
-    sha256 "6d27336e21a4f2b5c9a8f76ec94f82f6f44183d41a0e840b7ac8b1f184af4b10"
+    sha256 "20fce3957b92ebbbdeab57f2b358560e2f52a246261f86328faf06b3fdcd37e1"
   end
 
   if OS.linux? && Hardware::CPU.intel?
     url "https://github.com/spinframework/spin/releases/download/v#{version}/spin-v#{version}-linux-amd64.tar.gz"
-    sha256 "86bc13743a23754fd815e30db127c89ff9486d0b4be226ff437f238c3ee9c425"
+    sha256 "59ebe1f0222d7ada11c7c8b9d60f041fe1685706939a0179e0c9272c21f12642"
   end
 
   if OS.linux? && Hardware::CPU.arm?
     url "https://github.com/spinframework/spin/releases/download/v#{version}/spin-v#{version}-linux-aarch64.tar.gz"
-    sha256 "9d078bf86de71f818a827582b63421c28bc0849b1458c5166ba64bb6f6227fa6"
+    sha256 "75dbd2a41ca7c62a113b0c7ebd1886e586c9c2a7249bc49181e7c7d19970bf90"
   end
 
   def install
