@@ -35,7 +35,9 @@ wget -qO checksums.txt "https://github.com/spinframework/spin/releases/download/
 
 # Remove the 'v' prefix from the version
 ERSION="${VERSION:1}"
-${SED_INPLACE} -e "s/version \"[^\"]*\"/version \"${ERSION}\"/" "${FORMULA}"
+# The formula has no `version` stanza; Homebrew scans it from the release URL, so
+# declaring it would fail `brew audit` as redundant.
+${SED_INPLACE} -E "/^ *url / s/v[0-9]+\.[0-9]+\.[0-9]+/v${ERSION}/g" "${FORMULA}"
 # Update the sha256 checksums for each OS/Arch
 while read -r line
 do
