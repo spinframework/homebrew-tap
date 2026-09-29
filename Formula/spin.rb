@@ -3,23 +3,23 @@ class Spin < Formula
   homepage "https://github.com/spinframework/spin"
 
   if OS.mac? && Hardware::CPU.intel?
-    url "https://github.com/spinframework/spin/releases/download/v4.1.0/spin-v4.1.0-macos-amd64.tar.gz"
-    sha256 "0c1be315e6fce47a8b685ce821349a2de223e65b8ba377e51f6177059e834075"
+    url "https://github.com/spinframework/spin/releases/download/v4.2.0/spin-v4.2.0-macos-amd64.tar.gz"
+    sha256 "accffc576ee087a864dbe179c0af27983a17bb97f144cf802f9730507853ceb9"
   end
 
   if OS.mac? && Hardware::CPU.arm?
-    url "https://github.com/spinframework/spin/releases/download/v4.1.0/spin-v4.1.0-macos-aarch64.tar.gz"
-    sha256 "04d9b5331acd33a065820b1a0d497a9d18611cc53d2e88d962d60aa0b90d155d"
+    url "https://github.com/spinframework/spin/releases/download/v4.2.0/spin-v4.2.0-macos-aarch64.tar.gz"
+    sha256 "cca4aa322bfc3c57bd5e968a3bafcfd533d23b2dabedcf9b319988ceda7e313d"
   end
 
   if OS.linux? && Hardware::CPU.intel?
-    url "https://github.com/spinframework/spin/releases/download/v4.1.0/spin-v4.1.0-linux-amd64.tar.gz"
-    sha256 "aeeb892f94cf861f5302546faa0bdaa82cc4be30539621299746a6dc011f3b5a"
+    url "https://github.com/spinframework/spin/releases/download/v4.2.0/spin-v4.2.0-linux-amd64.tar.gz"
+    sha256 "6982fbefa60cb95d290e122b175263d42cad41f2d56b69e3df51d98d594aed81"
   end
 
   if OS.linux? && Hardware::CPU.arm?
-    url "https://github.com/spinframework/spin/releases/download/v4.1.0/spin-v4.1.0-linux-aarch64.tar.gz"
-    sha256 "b251a29d50fa5e23ac92497d0dd995ce694f79c420c501b4bee1372379c3fd29"
+    url "https://github.com/spinframework/spin/releases/download/v4.2.0/spin-v4.2.0-linux-aarch64.tar.gz"
+    sha256 "4fb55e287256284094e193745338e695f7e84874f866014e9a32d879efaabbfe"
   end
 
   def install
