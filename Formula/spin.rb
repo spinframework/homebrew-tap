@@ -26,36 +26,24 @@ class Spin < Formula
     bin.install "spin"
   end
 
-  def post_install
-    # Migrate plugins and templates and templates data to new data directory
-    source_dir = etc/"fermyon-spin"
-    dest_dir = etc/"spinframework-spin"
-    if File.directory?(source_dir) && !Dir.empty?(source_dir)
-      ohai "Migrating Spin data from #{source_dir} to #{dest_dir}"
-      mkdir_p dest_dir
-      files = Dir.glob("#{source_dir}/*")
-
-      if files.any?
-        files.each do |file|
-          cp_r file, dest_dir, preserve: true
-        end
-      else
-        ohai "No files to migrate from #{source_dir}"
-      end
+  post_install_steps do
+    # Migrate plugins and templates data to new data directory
+    if_path_exists "fermyon-spin", base: :etc do
+      mkdir_p "spinframework-spin", base: :etc
+      # cp merges into the existing dir; the `copy` step would replace it wholesale
+      run "/bin/cp", args: ["-Rp", "{{etc}}/fermyon-spin/.", "{{etc}}/spinframework-spin/"]
     end
 
     # Install default templates and plugins for language tooling and deploying apps to the cloud.
     # Templates and plugins are installed into `pkgetc/"templates"` and `pkgetc/"plugins"`.
-    template_repos = [
-      "https://github.com/spinframework/spin",
-      "https://github.com/spinframework/spin-python-sdk",
-      "https://github.com/spinframework/spin-js-sdk",
-    ]
-    template_repos.each do |repo|
-      system "#{bin}/spin", "templates", "install", "--git", repo, "--upgrade"
-    end
-
-    system "#{bin}/spin", "plugins", "update"
+    run "spin", args: ["templates", "install", "--git", "https://github.com/spinframework/spin", "--upgrade"],
+                base: :bin
+    run "spin", args: ["templates", "install", "--git", "https://github.com/spinframework/spin-python-sdk",
+                       "--upgrade"],
+                base: :bin
+    run "spin", args: ["templates", "install", "--git", "https://github.com/spinframework/spin-js-sdk", "--upgrade"],
+                base: :bin
+    run "spin", args: ["plugins", "update"], base: :bin
   end
 
   test do
